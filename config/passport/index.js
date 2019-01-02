@@ -14,6 +14,8 @@ var passportConfig = function(server){
         done(null, user);
     });
 
+    require('./local')(server);
+
 };
 
 module.exports = passportConfig;

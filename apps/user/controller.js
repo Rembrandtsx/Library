@@ -3,9 +3,19 @@ var express = require('express'),
     router = express.Router(),
     User = require('./models').User; //Traigo el modelo user
 
+
+router.route('/salir/')
+    .get(function (req,res) {
+        req.logout();
+        res.redirect('/');
+    });
+
 router.route('/ingresar/')
     .get(function(req, res){
-        res.render('user/login.html')
+        var context = {
+            error_message : req.flash('error')[0]
+        };
+        res.render('user/login.html', context);
     });
 
 router.route('/registrar/')
